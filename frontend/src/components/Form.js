@@ -60,7 +60,7 @@ function Form(props) {
 							value={title}
 							onChange={e=>setTitle(e.target.value)}
 						/>
-						<TextField id="outlined-name" label="내용" rows="1" multiline defaultValue="Default Value" variant="outlined" className={classes.TextField}
+						<TextField id="outlined-name" label="내용" rows="1" defaultValue="Default Value" variant="outlined" className={classes.TextField}
 							name="content"
 							value={content}
 							onChange={e=>setContent(e.target.value)}

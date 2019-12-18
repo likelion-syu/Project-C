@@ -1,0 +1,26 @@
+body {
+	background-color: #f5f5f5;
+}
+h1 {
+	text-align: center;
+	margin: 2rem auto;
+}
+ul {
+	padding-left: 0;
+}
+form {
+	// width: fit-content;
+    margin: auto;
+}
+input {
+	width: 100%;
+}
+
+.listbox {
+	padding: 1rem;
+	margin: 1rem;
+
+	li {
+		list-style: none;
+	}
+}

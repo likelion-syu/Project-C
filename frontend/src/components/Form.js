@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from "axios"
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -17,20 +16,21 @@ function Form(props) {
 	// title, content 입력과 인풋창 표시를 위한 state
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
+	const [image, setImage] = useState('');
 
 	//Create
-	const post = async (tit , con) => {
-		await axios({
-			url : 'http://localhost:8000/api/posts/',
-			method: 'post',
-			data : {
-				title : tit,
-				content : con,
-			}
-		})
-	}
+	// const post = async (tit , con) => {
+	// 	await axios({
+	// 		url : 'http://localhost:8000/api/posts/',
+	// 		method: 'post',
+	// 		data : {
+	// 			title : tit,
+	// 			content : con,
+	// 		}
+	// 	})
+	// }
 
-	const handleSubmit = async (evt) => {
+	const onSubmit = (evt) => {
 		evt.preventDefault();
 
 		if(title.trim().length === 0 || content.trim().length === 0){
@@ -40,18 +40,23 @@ function Form(props) {
 			alert('뭔가 내용이 너무 길어요');
         }
 		else {
-			await post(title , content);
+			props.onPostData(title, content, image);
+			// console.log(title, image, content)
 			// 내용 비우기
 			setTitle("");
 			setContent("");
+			setImage("");
 		}
-		props.HandleSubmit();
-	}
-
+	};
+	const handleImageChange = (e) => {
+		setImage({
+		  image:e.target.files[0]
+		})
+	};
 	const classes = useStyles();
 
 	return (
-		<form onSubmit={handleSubmit} className={classes.root}>
+		<form onSubmit={onSubmit} className={classes.root}>
 			<Grid container direction="row" justify="center" alignItems="center">
 				<Grid item xs={12}>
 					<Grid container direction="column" justify="center" alignItems="center">
@@ -65,6 +70,11 @@ function Form(props) {
 							value={content}
 							onChange={e=>setContent(e.target.value)}
 						/>
+						<input 
+						type = "file" 
+						onChange={handleImageChange}
+						/>
+						<img src={image} />
 					</Grid>	
 				</Grid>		
 				<Grid item xs={12}>

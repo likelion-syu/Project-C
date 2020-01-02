@@ -41,6 +41,7 @@ function List(props) {
 				<Grid container direction="row" justify="center" alignItems="center">
 					<Grid item xs={10}>
 						<h2>{props.title}</h2>
+						<img src={props.image} alt={props.title}/>
 						<p>{props.content}</p>
 						<p className={classes.time}>{moment(props.time).startOf('day').fromNow() }</p>				
 					</Grid>

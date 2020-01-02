@@ -48,6 +48,7 @@ function App(props) {
 					<Form HandleSubmit={ submit }/>		
 				</Paper>
 				<Divider variant="middle" />
+				<h1>Posts</h1>
 				<div className="ViewSection">
 					<ul>
 						{
@@ -57,6 +58,7 @@ function App(props) {
 									key={idx}
 									id={item.id}
 									title={item.title}
+									image={item.image}
 									content={item.content}
 									time={item.created_at}
 									handleEvent={ remove }
@@ -67,6 +69,8 @@ function App(props) {
 						
 					</ul>
 				</div>
+				<Divider variant="middle" />
+				<h1>Cats</h1>
 			</Container>
 		</div>
 	);

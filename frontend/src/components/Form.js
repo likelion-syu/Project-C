@@ -18,18 +18,6 @@ function Form(props) {
 	const [content, setContent] = useState('');
 	const [image, setImage] = useState('');
 
-	//Create
-	// const post = async (tit , con) => {
-	// 	await axios({
-	// 		url : 'http://localhost:8000/api/posts/',
-	// 		method: 'post',
-	// 		data : {
-	// 			title : tit,
-	// 			content : con,
-	// 		}
-	// 	})
-	// }
-
 	const onSubmit = (evt) => {
 		evt.preventDefault();
 
@@ -41,11 +29,10 @@ function Form(props) {
         }
 		else {
 			props.onPostData(title, content, image);
-			// console.log(title, image, content)
 			// 내용 비우기
 			setTitle("");
 			setContent("");
-			setImage("");
+			setImage('');
 		}
 	};
 	const handleImageChange = (e) => {

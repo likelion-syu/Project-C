@@ -2,7 +2,7 @@ import React from 'react';
 
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import Item from './Item'
+import Item from './Items'
 
 const useStyles = makeStyles(theme => ({
 	divider: {
@@ -26,13 +26,13 @@ function List(props) {
 			<ul>
                 {
                     props.todos.map(
-                        (todo, idx) => (
-                        <Item
-                            key={idx}
-                            todo = {todo}
-                            onRemove = {props.onRemove}
-                        />
-                        )
+							(todo, idx) => (
+							<Item
+								key={idx}
+								todo = {todo}
+								onRemove = {props.onRemove}
+							/>
+							)
                         )
                     }
             </ul>

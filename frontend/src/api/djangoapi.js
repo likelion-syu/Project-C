@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 //리스트 가져오기
 export async function getTodo() {
     const res = await axios.get(
@@ -6,6 +7,7 @@ export async function getTodo() {
     );
     return res.data;
 }
+
 //리스트 추가
 export async function postTodo(formdata) {
     const res = await axios.post(
@@ -17,6 +19,7 @@ export async function postTodo(formdata) {
     );
     return res.data;
 }
+
 //리스트 제거
 export async function delTodo(id) {
     const res = await axios.delete(

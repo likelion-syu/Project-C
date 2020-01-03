@@ -22,10 +22,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function List(props) {
-    const classes = useStyles();
+	const classes = useStyles();
     
     const handleRemove = () => {
-        props.onRemove(props.todo.id);
+		if(window.confirm('삭제할까요?')){
+            props.onRemove(props.todo.id);
+        }
     };
 
 	return (

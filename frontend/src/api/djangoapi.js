@@ -35,3 +35,15 @@ export async function patchTodo(id, data) {
     );
     return res.data;
 }
+//리스트 수정
+export async function putTodo(id, data) {
+    const res = await axios.put(
+        'http://127.0.0.1:8000/api/posts/'+id+'/', data, {
+            headers: {
+                'content-type' : 'mutipart/form-data'
+            }
+        }
+        );
+        console.log(id, data)
+        return res.data
+}

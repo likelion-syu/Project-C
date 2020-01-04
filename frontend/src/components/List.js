@@ -1,26 +1,11 @@
 import React from 'react';
 
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import Item from './Items'
+import Item from './Items';
+import '../assets/ListStyle.scss'
 
-const useStyles = makeStyles(theme => ({
-	divider: {
-        height: '6rem',
-        verticalAlign:'middle',
-        display:'inline-block',
-	},
-	time: {
-		fontSize: '0.9rem',
-		color: 'gray',
-	}
-}));
 
 function List(props) {
-
-	const classes = useStyles();
-    
-    console.log(props.todos)
 	return (
 		<Paper className='listbox'>
 			<ul>
@@ -31,6 +16,7 @@ function List(props) {
 								key={idx}
 								todo = {todo}
 								onRemove = {props.onRemove}
+								onPutData = {props.onPutData}
 							/>
 							)
                         )

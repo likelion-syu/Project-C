@@ -17,7 +17,12 @@ const initialState = {
         error: null,
         data: null
     },
-    patchData:{
+    putData: {
+        loading: false,
+        error: null,
+        data: null
+    },
+    patchData: {
         loading: false,
         error: null,
         data: null
@@ -27,7 +32,7 @@ const initialState = {
 //TodoList리듀서
 export default function todos (state = initialState, action) {
     switch (action.type) {
-        
+        //데이터 가져오기
         case TodoAction.GET_TODO_DATA:
             return {
                 ...state,
@@ -55,6 +60,7 @@ export default function todos (state = initialState, action) {
                     data: null
                 }
             };
+        //데이터 올리기
         case TodoAction.POST_TODO_DATA:
             return {
                 ...state,
@@ -73,15 +79,16 @@ export default function todos (state = initialState, action) {
                     data: action.postData
                 }
             };
-        case TodoAction.POST_TODO_DATA_ERROR:
-            return {
-                ...state,
-                postData: {
-                    loading: false,
-                    error: action.error,
-                    data: null
-                }
-            };
+            case TodoAction.POST_TODO_DATA_ERROR:
+                return {
+                    ...state,
+                    postData: {
+                        loading: false,
+                        error: action.error,
+                        data: null
+                    }
+                };
+        //데이터 삭제하기
         case TodoAction.DEL_TODO_DATA:
             return {
                 ...state,
@@ -109,6 +116,35 @@ export default function todos (state = initialState, action) {
                     data: null
                 }
             };
+        //데이터 수정하기
+        case TodoAction.PUT_TODO_DATA:
+            return {
+                ...state,
+                putData: {
+                    loading: true,
+                    error: null,
+                    data: null
+                }
+            };
+        case TodoAction.PUT_TODO_DATA_SUCCESS:
+            return {
+                ...state,
+                putData: {
+                    loading: false,
+                    error: null,
+                    data: action.putData
+                }
+            };
+        case TodoAction.PUT_TODO_DATA_ERROR:
+            return {
+                ...state,
+                putData: {
+                    loading: false,
+                    error: action.error,
+                    data: null
+                }
+            };
+        //좋아요 클릭
         case TodoAction.PATCH_TODO_DATA:
             return {
                 ...state,

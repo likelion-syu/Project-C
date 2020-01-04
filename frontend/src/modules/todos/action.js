@@ -1,4 +1,4 @@
-import { getTodo, postTodo, delTodo, patchTodo } from '../../api/djangoapi';
+import { getTodo, postTodo, delTodo, patchTodo, putTodo } from '../../api/djangoapi';
 
 //TodoList 가져오기
 export const GET_TODO_DATA = 'todos/GET_TODO_DATA';
@@ -12,6 +12,10 @@ export const POST_TODO_DATA_ERROR = 'todos/POST_TODO_DATA_ERROR';
 export const DEL_TODO_DATA = 'todos/DEL_TODO_DATA';
 export const DEL_TODO_DATA_SUCCESS = 'todos/DEL_TODO_DATA_SUCCESS';
 export const DEL_TODO_DATA_ERROR = 'todos/DEL_TODO_DATA_ERROR';
+//TodoList 수정
+export const PUT_TODO_DATA = 'todos/PUT_TODO_DATA';
+export const PUT_TODO_DATA_SUCCESS = 'todos/PUT_TODO_DATA_SUCCESS'; 
+export const PUT_TODO_DATA_ERROR = 'todos/PUT_TODO_DATA_ERROR';
 //TodoList patch
 export const PATCH_TODO_DATA = 'todos/PATCH_TODO_DATA';
 export const PATCH_TODO_DATA_SUCCESS = 'todos/PATCH_TODO_DATA_SUCCESS'; 
@@ -46,7 +50,17 @@ export const delTodos = (id) => async dispatch => {
         dispatch ({ type: DEL_TODO_DATA_ERROR, error: e});
     }
 };
-//패치하는 함수
+//TodoList 수정하는 함수
+export const putTodos = (id, data) => async dispatch => {
+    dispatch({ type: PUT_TODO_DATA });
+    try {
+        const putData = await putTodo(id, data);
+        dispatch({ type: PUT_TODO_DATA_SUCCESS, putData});
+    } catch (e) {
+        dispatch ({ type: PUT_TODO_DATA_ERROR, error : e});
+    }
+};
+//패치하는 함수 //좋아요 체크용으로 쓸려고 남겨둠
 export const patchTodos = (id, data) => async dispatch => {
     dispatch({ type: PATCH_TODO_DATA });
     try {

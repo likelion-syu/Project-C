@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function Form(props) {
+function PostForm(props) {
 	// title, content 입력과 인풋창 표시를 위한 state
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
@@ -35,6 +35,7 @@ function Form(props) {
 			setImage('');
 		}
 	};
+	console.log(props.onPostData)
 	const handleImageChange = (e) => {
 		setImage({
 		  image:e.target.files[0]
@@ -47,7 +48,7 @@ function Form(props) {
 			<Grid container direction="row" justify="center" alignItems="center">
 				<Grid item xs={12}>
 					<Grid container direction="column" justify="center" alignItems="center">
-						<TextField id="outlined-name" label="제목" rows="1" defaultValue="Default Value" variant="outlined" className={classes.TextField}
+						<TextField id="outlined-name" label="제목" rows="1" defaultValue="Default Value" variant="outlined"  className={classes.TextField}
 							name="title"
 							value={title}
 							onChange={e=>setTitle(e.target.value)}
@@ -61,7 +62,7 @@ function Form(props) {
 						type = "file" 
 						onChange={handleImageChange}
 						/>
-						<img src={image} />
+						<img src={image} alt = "upload-img" />
 					</Grid>	
 				</Grid>		
 				<Grid item xs={12}>
@@ -76,4 +77,4 @@ function Form(props) {
 	)
 }
 
-export default Form;
+export default PostForm;

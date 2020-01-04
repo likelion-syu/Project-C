@@ -1,5 +1,6 @@
 import React from 'react';
 import PostListContainer from './containers/PostListContainer'
+import './assets/IndexStyle.scss'
 
 
 function App() {

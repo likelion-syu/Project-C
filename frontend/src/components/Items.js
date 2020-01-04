@@ -8,8 +8,9 @@ import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import moment from 'moment'
+import ModalForm from './ModalForm'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
 	divider: {
         height: '6rem',
         verticalAlign:'middle',
@@ -19,9 +20,9 @@ const useStyles = makeStyles(theme => ({
 		fontSize: '0.9rem',
 		color: 'gray',
 	}
-}));
+});
 
-function List(props) {
+function Item(props) {
 	const classes = useStyles();
     
     const handleRemove = () => {
@@ -38,7 +39,7 @@ function List(props) {
 						<h2>{props.todo.title}</h2>
 						<img src={props.todo.image} alt={props.todo.title}/>
 						<p>{props.todo.content}</p>
-						<p className={classes.time}>{moment(props.todo.time).startOf('day').fromNow() }</p>				
+						<p className={classes.time}>{moment(props.todo.time).startOf('day').fromNow() }</p>
 					</Grid>
 					<Grid item xs={1}>
 						<Grid container direction="row" justify="center" alignItems="center">
@@ -47,15 +48,16 @@ function List(props) {
 					</Grid>
 					
 					<Grid item xs={1}>
-						<Grid container direction="row" justify="center" alignItems="center">		
+						<Grid container direction="row" justify="center" alignItems="center">
+							<ModalForm onPutData={props.onPutData} todo={props.todo}>수 정</ModalForm>
 							<IconButton color="secondary" className={classes.iconButton} aria-label="directions" onClick={ handleRemove }>
 								<DeleteOutlinedIcon/>
 							</IconButton>
-						</Grid>			
-					</Grid>	
+						</Grid>
+					</Grid>
 				</Grid>
 			</li>
 		</Paper>
 	)
 }
-export default List;
+export default Item;

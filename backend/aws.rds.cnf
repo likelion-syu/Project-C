@@ -1,0 +1,6 @@
+[client]
+database = demo
+user = root
+password = pamr9486
+default-character-set = utf8
+port = 3306

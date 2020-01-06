@@ -66,6 +66,7 @@ export default function ModalForm(props) {
           console.log(props.todo.id, title, content, image)
       }
   };
+
   const handleImageChange = (e) => {
       setImage({
         image:e.target.files[0]
@@ -86,30 +87,30 @@ export default function ModalForm(props) {
             <EditOutlinedIcon/>
         </IconButton>
         <Modal
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            open={open}
-            onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={open}
+          onClose={handleClose}
         >
-            <div style={modalStyle} className={classes.paper}>
-                <form onSubmit={onEdit}>
-                    <TextField label="제목" rows="1" variant="outlined" className={classes.TextField}
-                        value={title}
-                        onChange = {e=>setTitle(e.target.value)}
-                        name="title"
-                    >
-                    </TextField>
-                    <TextField label="내용" rows="1" variant="outlined" className={classes.TextField}
-                        value={content}
-                        onChange = {e=>setContent(e.target.value)}
-                        name="content"
-                    >
-                    </TextField>
-                    <input type = "file" onChange={handleImageChange} />
-                    {/* 버튼 내용 쓰는 곳 */}
-                    <Button  className={classes.Button} variant="contained" color="primary" type = "submit">{props.children}</Button>
-                </form>
-            </div>
+          <div style={modalStyle} className={classes.paper}>
+              <form onSubmit={onEdit}>
+                  <TextField label="제목" rows="1" variant="outlined" className={classes.TextField}
+                      value={title}
+                      onChange = {e=>setTitle(e.target.value)}
+                      name="title"
+                  >
+                  </TextField>
+                  <TextField label="내용" rows="1" variant="outlined" className={classes.TextField}
+                      value={content}
+                      onChange = {e=>setContent(e.target.value)}
+                      name="content"
+                  >
+                  </TextField>
+                  <input type = "file" onChange={handleImageChange} />
+                  {/* 버튼 내용 쓰는 곳 */}
+                  <Button  className={classes.Button} variant="contained" color="primary" type = "submit">{props.children}</Button>
+              </form>
+          </div>
         </Modal>
     </div>
   );

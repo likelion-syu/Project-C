@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/seonghyeon/Desktop/study/web/react/likelion_exam/react-project/myvenv"
+set -gx VIRTUAL_ENV "/Users/seonghyeon/Desktop/study/web/react/react-project/myvenv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

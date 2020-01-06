@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/seonghyeon/Desktop/study/web/react/likelion_exam/react-project/myvenv"
+VIRTUAL_ENV="/Users/seonghyeon/Desktop/study/web/react/react-project/myvenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

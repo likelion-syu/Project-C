@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
@@ -45,8 +44,7 @@ export default function ModalForm(props) {
   // 폼내용을 수정하는데 필요한 state
   const [title, setTitle] = useState(props.todo.title);
   const [content, setContent] = useState(props.todo.content);
-  const [image, setImage] = useState(props.todo.image);
-
+  const [image, setImage] = useState(props.todo.image)
   const onEdit = (evt) => {
       evt.preventDefault();
 

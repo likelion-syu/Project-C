@@ -9,10 +9,14 @@ class PostViewset(viewsets.ModelViewSet):
     queryset = models.Post.objects.all().order_by('id')
     serializer_class = serializers.PostSerializer
 
+class CommentViewset(viewsets.ModelViewSet):
+    queryset = models.Comment.objects.all().order_by('id')
+    serializer_class = serializers.CommentSerializer
+
 class CatViewset(viewsets.ModelViewSet):
     queryset = models.Cat.objects.all().order_by('id')
     serializer_class = serializers.CatSerializer
 
-# class ImageViewset(viewsets.ModelViewSet):
-# 	queryset = models.Image.objects.all().order_by('id')
-# 	serializer_class = serializers.ImageSerializer
+class UserViewset(viewsets.ModelViewSet):
+    queryset = models.AuthUser.objects.all().order_by('id')
+    serializer_class = serializers.UserSerializer

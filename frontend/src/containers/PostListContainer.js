@@ -28,7 +28,7 @@ function PostListContainer() {
 		form_data.append('image', data3.image, data3.image.name);
 		let post = postTodos(form_data)
 		await post(dispatch)
-		// dispatch(getTodos())
+		dispatch(getTodos())
 	}
 	// Edit 이후 list 업데이트
 	const onPutData = async (id, data1, data2, data3) => {

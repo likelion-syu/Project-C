@@ -9,6 +9,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import Thunk  from 'redux-thunk';
 import rootReducer from './Modules';
 
+import {postTodos, getTodos} from './modules/todos/action'
+
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(Thunk)));
 
 ReactDOM.render(

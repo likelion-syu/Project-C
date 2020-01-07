@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import axios from "axios"
 
 import Grid from '@material-ui/core/Grid';
@@ -36,6 +37,7 @@ function Item(props) {
 			<li key={props.todo.id}>
 				<Grid container direction="row" justify="center" alignItems="center">
 					<Grid item xs={10}>
+						<Link to={`${props.url}/${props.todo.id}`}>{props.todo.title}</Link>
 						<h2>{props.todo.title}</h2>
 						<img src={props.todo.image} alt={props.todo.title}/>
 						<p>{props.todo.content}</p>

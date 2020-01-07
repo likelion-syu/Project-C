@@ -1,14 +1,14 @@
 import React , { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import PostForm from "../components/PostForm"
-import List from "../components/List.js"
+import PostForm from "../Components/PostForm"
+import List from "../Components/List.js"
 
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 
-import { postTodos, getTodos, delTodos, putTodos } from '../modules/todos/action'
+import { postTodos, getTodos, delTodos, putTodos } from '../Modules/todos/action'
 
 
 function PostListContainer() {

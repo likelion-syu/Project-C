@@ -12,6 +12,7 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register('posts', post.views.PostViewset)
 router.register('cats', post.views.CatViewset)
+router.register('comments',post.views.CommentViewset)
 router.register('users',post.views.UserViewset)
 # router.register('images', post.views.ImageViewset)
 

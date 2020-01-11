@@ -15,6 +15,7 @@ router = routers.DefaultRouter()
 router.register('posts', post.views.PostViewset)
 router.register('cats', post.views.CatViewset)
 router.register('auth/users',post.views.UserViewset)
+router.register('comments',post.views.CommentViewset)
 # router.register('images', post.views.ImageViewset)
 
 urlpatterns = [

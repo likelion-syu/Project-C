@@ -9,9 +9,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import Thunk  from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 
-import rootReducer from './modules';
-
-// import {postTodos, getTodos} from './modules/todos/action'
+// import rootReducer from './modules';
+import rootReducer from './Modules';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(Thunk)));
 

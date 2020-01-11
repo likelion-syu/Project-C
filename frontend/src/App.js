@@ -1,16 +1,20 @@
 import React from 'react';
-import PostListContainer from './containers/PostListContainer';
-import './assets/IndexStyle.scss';
-import Login from './components/Login';
-import {Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './Components/assets/IndexStyle.scss'
+
+import Home from './Containers/Home'
+import Item from './Components/Items'
+import Detail from './Components/Detail'
 
 
-function App() {
+function App(match) {
 	return (
+		
 		<div className="App">
-			{/* <PostListContainer/> */}
-			<Route path="/" exact={ true } component= {PostListContainer}/>
-			<Route path="/login" exact={true} component= {Login} />
+			<Router>
+				<Route exact path="/" component={Home}/>
+				<Route path="/post/:id" component={Detail}/>
+			</Router>	
 		</div>
 	);
 }

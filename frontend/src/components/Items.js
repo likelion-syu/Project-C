@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { Link } from 'react-router-dom';
 // import axios from "axios"
 
 import Grid from '@material-ui/core/Grid';
@@ -29,13 +31,16 @@ function Item(props) {
 		if(window.confirm('삭제할까요?')){
             props.onRemove(props.todo.id);
         }
-    };
-
+	};
+	
 	return (
 		<Paper className='listbox'>
 			<li key={props.todo.id}>
 				<Grid container direction="row" justify="center" alignItems="center">
 					<Grid item xs={10}>
+						
+						<Link to={`post/${props.todo.id}`}>{props.todo.title}</Link>
+
 						<h2>{props.todo.title}</h2>
 						<img src={props.todo.image} alt={props.todo.title}/>
 						<p>{props.todo.content}</p>
@@ -60,4 +65,5 @@ function Item(props) {
 		</Paper>
 	)
 }
+
 export default Item;

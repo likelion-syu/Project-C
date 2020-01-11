@@ -2,7 +2,7 @@ import React from 'react';
 
 import Paper from '@material-ui/core/Paper';
 import Item from './Items';
-import '../assets/ListStyle.scss'
+import './assets/ListStyle.scss'
 
 
 function List(props) {

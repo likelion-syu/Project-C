@@ -40,6 +40,7 @@ function PostForm(props) {
 		setImage({
 		  image:e.target.files[0]
 		})
+		
 	};
 	const classes = useStyles();
 
@@ -62,7 +63,6 @@ function PostForm(props) {
 						type = "file" 
 						onChange={handleImageChange}
 						/>
-						<img src={image} alt = "upload-img" />
 					</Grid>	
 				</Grid>		
 				<Grid item xs={12}>

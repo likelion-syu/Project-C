@@ -1,4 +1,4 @@
-import { getTodo, postTodo, delTodo, patchTodo, putTodo } from '../../api/djangoapi';
+import { getTodo, postTodo, delTodo, patchTodo, putTodo } from '../../Api/djangoapi';
 
 //TodoList 가져오기
 export const GET_TODO_DATA = 'todos/GET_TODO_DATA';

@@ -14,7 +14,6 @@ class PostSerializer(serializers.ModelSerializer):
 		fields = '__all__'
 
 class CommentSerializer(serializers.ModelSerializer):
-	# image = serializers.ImageField(use_url=True)
 	created_at = serializers.ReadOnlyField()
 	updated_at = serializers.ReadOnlyField()
 	author = serializers.ReadOnlyField(source='author.username')

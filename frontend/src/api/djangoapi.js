@@ -8,6 +8,14 @@ export async function getTodo() {
     return res.data;
 }
 
+//디테일 리스트 가져오기 
+export async function getDetailTodo(id) {
+    const res = await axios.get(
+        'http://127.0.0.1:8000/api/posts/'+id+'/'
+    );
+    return res.data;
+}
+
 //리스트 추가
 export async function postTodo(formdata) {
     const res = await axios.post(

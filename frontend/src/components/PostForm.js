@@ -35,7 +35,6 @@ function PostForm(props) {
 			setImage('');
 		}
 	};
-	console.log(props.onPostData)
 	const handleImageChange = (e) => {
 		setImage({
 		  image:e.target.files[0]

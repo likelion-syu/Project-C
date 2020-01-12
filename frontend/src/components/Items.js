@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-// import axios from "axios"
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -23,7 +22,7 @@ const useStyles = makeStyles({
 		color: 'gray',
 	}
 });
-
+  
 function Item(props) {
 	const classes = useStyles();
     

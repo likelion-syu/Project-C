@@ -7,7 +7,7 @@ export async function getTodo() {
     );
     return res.data;
 }
-
+ 
 //디테일 리스트 가져오기 
 export async function getDetailTodo(id) {
     const res = await axios.get(

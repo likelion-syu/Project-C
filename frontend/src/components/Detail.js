@@ -16,7 +16,7 @@ function Detail({match}) {
 	
 	return (
 		<div>
-			<h1>aa{detail}</h1>
+			<h1>aa</h1>
 		</div>
 	)
 }

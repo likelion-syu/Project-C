@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './Components/assets/IndexStyle.scss'
 
 import Home from './Containers/Home'
-import Item from './Components/Items'
 import Detail from './Components/Detail'
 
 

@@ -1,9 +1,13 @@
-import { getTodo, postTodo, delTodo, patchTodo, putTodo } from '../../Api/djangoapi';
+import { getTodo, postTodo, delTodo, patchTodo, putTodo, getDetailTodo } from '../../Api/djangoapi';
 
 //TodoList 가져오기
 export const GET_TODO_DATA = 'todos/GET_TODO_DATA';
 export const GET_TODO_DATA_SUCCESS = 'todos/GET_TODO_DATA_SUCCESS';
 export const GET_TODO_DATA_ERROR = 'todos/GET_TODO_DATA_ERROR';
+//TodoDetailList 가져오기
+	// export const GET_TODODETAIL_DATA = 'todos/GET_TODODETAIL_DATA';
+	// export const GET_TODODETAIL_DATA_SUCCESS = 'todos/GET_TODODETAIL_DATA_SUCCESS';
+	// export const GET_TODODETAIL_DATA_ERROR = 'todos/GET_TODODETAIL_DATA_ERROR';
 //TodoList 추가
 export const POST_TODO_DATA = 'todos/POST_TODO_DATA';
 export const POST_TODO_DATA_SUCCESS = 'todos/POST_TODO_DATA_SUCCESS';
@@ -27,9 +31,19 @@ export const getTodos = () => async dispatch => {
         const todoData = await getTodo();
         dispatch({ type: GET_TODO_DATA_SUCCESS, todoData });
     } catch (e) {
-        dispatch ({ type: GET_TODO_DATA_ERROR, error : e});
+        dispatch({ type: GET_TODO_DATA_ERROR, error : e});
     }
 };
+//TodoDetailList 가져오는 함수
+	// export const getDetailTodos = (id) => async dispatch => {
+	// 	dispatch({ type: GET_TODODETAIL_DATA  });
+	// 	try {
+	// 		const todoDetailData = await getDetailTodo(id);
+	// 		dispatch({ type: GET_TODODETAIL_DATA_SUCCESS, todoDetailData });
+	// 	} catch (e) {
+	// 		dispatch({ type: GET_TODODETAIL_DATA_ERROR, error : e});
+	// 	}
+	// };
 //TodoList 추가하는 함수
 export const postTodos = (data) => async dispatch => {
     dispatch({ type: POST_TODO_DATA });

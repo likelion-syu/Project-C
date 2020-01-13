@@ -7,7 +7,6 @@ export async function getTodo() {
     );
     return res.data;
 }
-
 //디테일 리스트 가져오기 
 export async function getDetailTodo(id) {
     const res = await axios.get(
@@ -15,7 +14,6 @@ export async function getDetailTodo(id) {
     );
     return res.data;
 }
-
 //리스트 추가
 export async function postTodo(formdata) {
     const res = await axios.post(
@@ -27,7 +25,6 @@ export async function postTodo(formdata) {
     );
     return res.data;
 }
-
 //리스트 제거
 export async function delTodo(id) {
     const res = await axios.delete(

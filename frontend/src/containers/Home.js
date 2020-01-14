@@ -19,7 +19,7 @@ function Home() {
 	useEffect (()=>{
 		dispatch(getTodos())
 	},[dispatch])
-	
+
 	// submit 이후 list 업데이트
 	const onPostData = async (data1, data2, data3) => {
 		let form_data = new FormData();
@@ -47,7 +47,7 @@ function Home() {
 		await del(dispatch)
 		dispatch(getTodos())
 	}
-	
+	console.log(loading, error, data)
 	return (
 		<>
 			<div>

@@ -48,7 +48,7 @@ export default function todos (state = initialState, action) {
                 todoData: {
                     loading: false,
                     error: null,
-                    data: action.todoData   
+                    data: action.todoData
                 }
             };
         case TodoAction.GET_TODO_DATA_ERROR:

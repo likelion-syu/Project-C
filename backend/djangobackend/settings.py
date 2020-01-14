@@ -39,9 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'post',
+
     'rest_framework',
     'corsheaders',
+    'knox',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

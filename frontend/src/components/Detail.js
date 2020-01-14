@@ -7,6 +7,7 @@ function Detail({match}) {
 	useEffect (()=>{
 		getDetailTodo(PostId).then((res) => {
 			const detail = res;
+			
 			// return detail;
 			console.log(detail.title);
 		});

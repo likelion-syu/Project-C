@@ -10,10 +10,10 @@ function List(props) {
 		<Paper className='listbox'>
 			<ul>
                 {
-                    props.todos.map(
-							(todo, idx) => (
+                    props.todos.results.map(
+							(todo) => (
 							<Item
-								key={idx}
+								key={todo.id}
 								todo = {todo}
 								onRemove = {props.onRemove}
 								onPutData = {props.onPutData}

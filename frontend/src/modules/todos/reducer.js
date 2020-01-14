@@ -7,6 +7,11 @@ const initialState = {
         error: null,
         data: null
     },
+    detailData: {
+        loading: false,
+        error: null,
+        data: null
+    },
     postData: {
         loading: false,
         error: null,
@@ -55,6 +60,34 @@ export default function todos (state = initialState, action) {
             return {
                 ...state,
                 todoData: {
+                    loading: false,
+                    error: action.error,
+                    data: null
+                }
+            };
+        //데이터 가져오기
+        case TodoAction.GET_O_TODO_DATA:
+            return {
+                ...state,
+                detailData: {
+                    loading: state.detailData.data,
+                    error: null,
+                    data: null
+                }
+            };
+        case TodoAction.GET_O_TODO_DATA_SUCCESS:
+            return {
+                ...state,
+                detailData: {
+                    loading: false,
+                    error: null,
+                    data: action.detailData
+                }
+            };
+        case TodoAction.GET_O_TODO_DATA_ERROR:
+            return {
+                ...state,
+                detailData: {
                     loading: false,
                     error: action.error,
                     data: null

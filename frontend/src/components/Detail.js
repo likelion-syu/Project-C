@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react';
-// import { postTodos, getTodos, delTodos, putTodos } from '../Modules/todos/action'
-import { getDetailTodo } from '../Api/djangoapi';
+import {useSelector, useDispatch} from 'react-redux'
+import { detailTodos } from '../Modules/todos/action'
+
 
 function Detail({match}) {
-	const PostId = match.params.id
-
+	const postId = match.params.id
+	const dispatch = useDispatch()
+	const { loading, error, data } = useSelector(state => state.todos.detailData)
 	useEffect (()=>{
-		getDetailTodo(PostId).then((res) => {
-			const detail = res;
-			console.log(detail.title);
-		});
-	},)
+		dispatch(detailTodos(postId))
+	},[dispatch, postId])
+	console.log(data)
 
-	
-	
 	return (
 		<div>
-			<h1>aa</h1>
+			{loading && <div>loading</div>}
+			{error && <div>에러가 발생했습니다.</div>}
+			{data && <div>{data.id}, {data.title}, {data.content}, {data.image}</div>}
 		</div>
-	)
+	);
 }
 export default Detail;

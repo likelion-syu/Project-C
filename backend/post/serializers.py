@@ -37,7 +37,7 @@ class CatSerializer(serializers.ModelSerializer):
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("id", "username", "password", "email")
+        fields = ("id", "username", "password","email")
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
@@ -49,7 +49,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("id", "username", " ")
+        fields = ("id", "username")
  # 로그인 시리얼라이저
 class LoginUserSerializer(serializers.Serializer):
     username = serializers.CharField()

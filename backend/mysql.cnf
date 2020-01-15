@@ -1,5 +1,5 @@
 [client]
-database = test
-port = 3307
+database = likeCat
+port = 3306
 user = root
-password = pamr9486
+password = likeCat5904

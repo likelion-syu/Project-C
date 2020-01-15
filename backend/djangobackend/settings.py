@@ -95,10 +95,10 @@ WSGI_APPLICATION = 'djangobackend.wsgi.application'
 DATABASES = {
     'default' : {
         'ENGINE' : 'django.db.backends.mysql',
-        'HOST' : 'localhost',
+        'HOST' : '34.84.211.136',
         'OPTIONS' : {
             'read_default_file' : os.path.join(BASE_DIR, 'mysql.cnf'),
-            # 'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
+            'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
 }

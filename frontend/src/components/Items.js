@@ -28,40 +28,39 @@ function Item(props) {
     
     const handleRemove = () => {
 		if(window.confirm('삭제할까요?')){
-            props.onRemove(props.todo.id);
+            props.onRemove(props.data.id);
         }
 	};
 	
 	return (
-		<Paper className='listbox'>
-			<li key={props.todo.id}>
-				<Grid container direction="row" justify="center" alignItems="center">
-					<Grid item xs={10}>
+		<Link to={`post/${props.data.id}`}>
+			<Paper className='listbox'>
+				<li key={props.data.id}>
+					<Grid container direction="row" justify="center" alignItems="center">
+						<Grid item xs={10}>
+							<h2>{props.data.title}</h2>
+							<img src={props.data.image} alt={props.data.title}/>
+							<p>{props.data.content}</p>
+							<p className={classes.time}>{moment(props.data.time).startOf('day').fromNow() }</p>
+						</Grid>
+						<Grid item xs={1}>
+							<Grid container direction="row" justify="center" alignItems="center">
+								<Divider className={ classes.divider } orientation="vertical"/>
+							</Grid>	
+						</Grid>
 						
-						<Link to={`post/${props.todo.id}`}>{props.todo.title}</Link>
-
-						<h2>{props.todo.title}</h2>
-						<img src={props.todo.image} alt={props.todo.title}/>
-						<p>{props.todo.content}</p>
-						<p className={classes.time}>{moment(props.todo.time).startOf('day').fromNow() }</p>
-					</Grid>
-					<Grid item xs={1}>
-						<Grid container direction="row" justify="center" alignItems="center">
-							<Divider className={ classes.divider } orientation="vertical"/>
-						</Grid>	
-					</Grid>
-					
-					<Grid item xs={1}>
-						<Grid container direction="row" justify="center" alignItems="center">
-							<ModalForm onPutData={props.onPutData} todo={props.todo}>수 정</ModalForm>
-							<IconButton color="secondary" className={classes.iconButton} aria-label="directions" onClick={ handleRemove }>
-								<DeleteOutlinedIcon/>
-							</IconButton>
+						<Grid item xs={1}>
+							<Grid container direction="row" justify="center" alignItems="center">
+								<ModalForm onPutData={props.onPutData} data={props.data}>수 정</ModalForm>
+								<IconButton color="secondary" className={classes.iconButton} aria-label="directions" onClick={ handleRemove }>
+									<DeleteOutlinedIcon/>
+								</IconButton>
+							</Grid>
 						</Grid>
 					</Grid>
-				</Grid>
-			</li>
-		</Paper>
+				</li>
+			</Paper>
+		</Link>
 	)
 }
 

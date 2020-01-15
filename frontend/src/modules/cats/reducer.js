@@ -1,8 +1,8 @@
-import * as TodoAction from "./action"
+import * as PostAction from "./action"
 
 //초기 스테이트 정해주기
 const initialState = {
-    todoData: {
+    PostsData: {
         loading: false,
         error: null,
         data: null
@@ -35,38 +35,38 @@ const initialState = {
 };
 
 //TodoList리듀서
-export default function todos (state = initialState, action) {
+export default function posts (state = initialState, action) {
     switch (action.type) {
         //데이터 가져오기
-        case TodoAction.GET_TODO_DATA:
+        case PostAction.GET_POST_DATA:
             return {
                 ...state,
-                todoData: {
-                    loading: state.todoData.data,
+                PostsData: {
+                    loading: state.PostsData.data,
                     error: null,
                     data: null
                 }
             };
-        case TodoAction.GET_TODO_DATA_SUCCESS:
+        case PostAction.GET_POST_DATA_SUCCESS:
             return {
                 ...state,
-                todoData: {
+                PostsData: {
                     loading: false,
                     error: null,
-                    data: action.todoData
+                    data: action.PostsData
                 }
             };
-        case TodoAction.GET_TODO_DATA_ERROR:
+        case PostAction.GET_POST_DATA_ERROR:
             return {
                 ...state,
-                todoData: {
+                PostsData: {
                     loading: false,
                     error: action.error,
                     data: null
                 }
             };
         //데이터 가져오기
-        case TodoAction.GET_O_TODO_DATA:
+        case PostAction.GET_O_POST_DATA:
             return {
                 ...state,
                 detailData: {
@@ -75,7 +75,7 @@ export default function todos (state = initialState, action) {
                     data: null
                 }
             };
-        case TodoAction.GET_O_TODO_DATA_SUCCESS:
+        case PostAction.GET_O_POST_DATA_SUCCESS:
             return {
                 ...state,
                 detailData: {
@@ -84,7 +84,7 @@ export default function todos (state = initialState, action) {
                     data: action.detailData
                 }
             };
-        case TodoAction.GET_O_TODO_DATA_ERROR:
+        case PostAction.GET_O_POST_DATA_ERROR:
             return {
                 ...state,
                 detailData: {
@@ -94,7 +94,7 @@ export default function todos (state = initialState, action) {
                 }
             };
         //데이터 올리기
-        case TodoAction.POST_TODO_DATA:
+        case PostAction.POST_POST_DATA:
             return {
                 ...state,
                 postData: {
@@ -103,7 +103,7 @@ export default function todos (state = initialState, action) {
                     data: null
                 }
             };
-        case TodoAction.POST_TODO_DATA_SUCCESS:
+        case PostAction.POST_POST_DATA_SUCCESS:
             return {
                 ...state,
                 postData: {
@@ -112,7 +112,7 @@ export default function todos (state = initialState, action) {
                     data: action.postData
                 }
             };
-            case TodoAction.POST_TODO_DATA_ERROR:
+            case PostAction.POST_POST_DATA_ERROR:
                 return {
                     ...state,
                     postData: {
@@ -122,7 +122,7 @@ export default function todos (state = initialState, action) {
                     }
                 };
         //데이터 삭제하기
-        case TodoAction.DEL_TODO_DATA:
+        case PostAction.DEL_POST_DATA:
             return {
                 ...state,
                 delData: {
@@ -131,7 +131,7 @@ export default function todos (state = initialState, action) {
                     data: null
                 }
             };
-        case TodoAction.DEL_TODO_DATA_SUCCESS:
+        case PostAction.DEL_POST_DATA_SUCCESS:
             return {
                 ...state,
                 delData: {
@@ -140,7 +140,7 @@ export default function todos (state = initialState, action) {
                     data: action.delData
                 }
             };
-        case TodoAction.DEL_TODO_DATA_ERROR:
+        case PostAction.DEL_POST_DATA_ERROR:
             return {
                 ...state,
                 delData: {
@@ -150,7 +150,7 @@ export default function todos (state = initialState, action) {
                 }
             };
         //데이터 수정하기
-        case TodoAction.PUT_TODO_DATA:
+        case PostAction.PUT_POST_DATA:
             return {
                 ...state,
                 putData: {
@@ -159,7 +159,7 @@ export default function todos (state = initialState, action) {
                     data: null
                 }
             };
-        case TodoAction.PUT_TODO_DATA_SUCCESS:
+        case PostAction.PUT_POST_DATA_SUCCESS:
             return {
                 ...state,
                 putData: {
@@ -168,7 +168,7 @@ export default function todos (state = initialState, action) {
                     data: action.putData
                 }
             };
-        case TodoAction.PUT_TODO_DATA_ERROR:
+        case PostAction.PUT_POST_DATA_ERROR:
             return {
                 ...state,
                 putData: {
@@ -178,7 +178,7 @@ export default function todos (state = initialState, action) {
                 }
             };
         //좋아요 클릭
-        case TodoAction.PATCH_TODO_DATA:
+        case PostAction.PATCH_POST_DATA:
             return {
                 ...state,
                 patchData: {
@@ -187,7 +187,7 @@ export default function todos (state = initialState, action) {
                     data: null
                 }
             };
-        case TodoAction.PATCH_TODO_DATA_SUCCESS:
+        case PostAction.PATCH_POST_DATA_SUCCESS:
             return {
                 ...state,
                 patchData: {
@@ -196,7 +196,7 @@ export default function todos (state = initialState, action) {
                     data: action.patchData
                 }
             };
-        case TodoAction.PATCH_TODO_DATA_ERROR:
+        case PostAction.PATCH_POST_DATA_ERROR:
             return {
                 ...state,
                 patchData: {

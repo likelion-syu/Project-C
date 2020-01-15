@@ -42,9 +42,9 @@ export default function ModalForm(props) {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   // 폼내용을 수정하는데 필요한 state
-  const [title, setTitle] = useState(props.todo.title);
-  const [content, setContent] = useState(props.todo.content);
-  const [image, setImage] = useState(props.todo.image)
+  const [title, setTitle] = useState(props.data.title);
+  const [content, setContent] = useState(props.data.content);
+  const [image, setImage] = useState(props.data.image)
   const onEdit = (evt) => {
       evt.preventDefault();
 
@@ -55,13 +55,13 @@ export default function ModalForm(props) {
           alert('뭔가 내용이 너무 길어요');
       }
       else {
-          props.onPutData(props.todo.id, title, content, image);
+          props.onPutData(props.data.id, title, content, image);
           // 내용 비우기
           setTitle("");
           setContent("");
           setImage('');
           handleClose()
-          console.log(props.todo.id, title, content, image)
+          console.log(props.data.id, title, content, image)
       }
   };
 

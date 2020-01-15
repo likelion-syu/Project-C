@@ -1,5 +1,0 @@
-[client]
-database = likeCat
-port = 3306
-user = root
-password = likeCat5904

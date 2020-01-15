@@ -13,7 +13,7 @@ from .serializers import (
 from knox.models import AuthToken
 
 class PostViewset(viewsets.ModelViewSet):
-    queryset = models.Post.objects.all().order_by('id')
+    queryset = models.Post.objects.all().filter()
     serializer_class = serializers.PostSerializer
 
 class CommentViewset(viewsets.ModelViewSet):

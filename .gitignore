@@ -2,7 +2,7 @@
 *.cnf
 
 ### Django ###
-
+mysql.cnf
 *.log
 *.pot
 *.pyc

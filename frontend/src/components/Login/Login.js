@@ -55,6 +55,7 @@ function Login(props) {
 		else {
 			dispatch(login(username, values.password))
 			setUsername("");
+			setValues({...values, password: ""})
 			//비밀번호가 안남게 해야됨
 		}
 	};

@@ -1,0 +1,5 @@
+[client]
+database = test
+port = 3308
+user = root
+password = 1111

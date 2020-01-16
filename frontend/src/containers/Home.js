@@ -1,5 +1,6 @@
 import React , { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import PostForm from "../Components/PostForm"
 import List from "../Components/List.js"
@@ -8,16 +9,16 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 
-import { postTodos, getTodos, delTodos, putTodos } from '../Modules/todos/action'
+import { postPosts, getPosts, delPosts, putPosts } from '../Modules/posts/action'
 
 
 function Home() {
-	const { loading, error, data } = useSelector(state => state.todos.todoData)
+	const { loading, error, data } = useSelector(state => state.posts.PostsData)
 	const dispatch = useDispatch()
 
 	// useEffect 는 ComponentDidMount와 비슷한 기능, Render를 담당한다.
 	useEffect (()=>{
-		dispatch(getTodos())
+		dispatch(getPosts())
 	},[dispatch])
 
 	// submit 이후 list 업데이트
@@ -26,9 +27,9 @@ function Home() {
 		form_data.append('title', data1);
 		form_data.append('content', data2);
 		form_data.append('image', data3.image, data3.image.name);
-		let post = postTodos(form_data)
+		let post = postPosts(form_data)
 		await post(dispatch)
-		dispatch(getTodos())
+		dispatch(getPosts())
 	}
 	// Edit 이후 list 업데이트
 	const onPutData = async (id, data1, data2, data3) => {
@@ -36,36 +37,45 @@ function Home() {
 		form_data.append('title', data1);
 		form_data.append('content', data2);
 		form_data.append('image', data3.image, data3.image.name);
-		let put = putTodos(id, form_data)
+		let put = putPosts(id, form_data)
 		await put(dispatch)
-		dispatch(getTodos())
+		dispatch(getPosts())
 	}
 
 	// delete 이후 list 업데이트
 	const onRemove = async (id) => {
-		let del = delTodos(id)
+		let del = delPosts(id)
 		await del(dispatch)
-		dispatch(getTodos())
+		dispatch(getPosts())
 	}
 	console.log(loading, error, data)
+
 	return (
 		<>
 			<div>
 				<div className="App">
 					<Container maxWidth="lg">
-						<h1>React With Django 방명록<span role ="img" aria-label="sunglass">😎</span></h1>
+						<h1>Cat</h1>
+
+						<Link to='/login'>Login</Link>
+
 						<Paper className='listbox'>
 							<PostForm onPostData={ onPostData }/>
 						</Paper>
 						<Divider variant="middle" />
-						<h1>Posts</h1>
+						<h2>Posts</h2>
 						<div className="ViewSection">
-							{loading && <List todos={loading} onRemove ={onRemove} />}
+							{loading && <List datas={loading} onRemove ={onRemove} />}
 							{error && <div>에러가 발생했습니다.</div>}
-							{data && <List todos={data} onRemove = {onRemove} onPutData = {onPutData} />}
+							{data && <List datas={data} onRemove = {onRemove} onPutData = {onPutData} />}
 						</div>
 						<Divider variant="middle" />
-						<h1>Cats</h1>
+						<h2>Cats</h2>
+						<div className="ViewSection">
+							{loading && <List datas={loading} onRemove ={onRemove} />}
+							{error && <div>에러가 발생했습니다.</div>}
+							{data && <List datas={data} onRemove = {onRemove} onPutData = {onPutData} />}
+						</div>
 					</Container>
 				</div>
 			</div>

@@ -1,23 +1,21 @@
 import axios from 'axios';
 
 //리스트 가져오기
-export async function getTodo() {
+export async function getPost() {
     const res = await axios.get(
         'http://127.0.0.1:8000/api/posts/'
     );
     return res.data;
 }
- 
 //디테일 리스트 가져오기 
-export async function detailTodo(id) {
+export async function detailPost(id) {
     const res = await axios.get(
         'http://127.0.0.1:8000/api/posts/'+id+'/'
     );
     return res.data;
 }
-
 //리스트 추가
-export async function postTodo(formdata) {
+export async function postPost(formdata) {
     const res = await axios.post(
         'http://127.0.0.1:8000/api/posts/',formdata, {
             headers:{
@@ -27,16 +25,15 @@ export async function postTodo(formdata) {
     );
     return res.data;
 }
-
 //리스트 제거
-export async function delTodo(id) {
+export async function delPost(id) {
     const res = await axios.delete(
         'http://127.0.0.1:8000/api/posts/'+id+'/'
     );
     return res.data;
 }
 //리스트 패치
-export async function patchTodo(id, data) {
+export async function patchPost(id, data) {
     
     const res = await axios.patch(
         'http://127.0.0.1:8000/api/posts/'+id+'/', {title:data=!data}
@@ -44,7 +41,7 @@ export async function patchTodo(id, data) {
     return res.data;
 }
 //리스트 수정
-export async function putTodo(id, data) {
+export async function putPost(id, data) {
     const res = await axios.put(
         'http://127.0.0.1:8000/api/posts/'+id+'/', data, {
             headers: {

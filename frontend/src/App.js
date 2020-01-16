@@ -4,6 +4,7 @@ import './Components/assets/IndexStyle.scss'
 
 import Home from './Containers/Home'
 import Detail from './Components/Detail'
+import Login from './Components/Login'
 
 
 function App(match) {
@@ -13,6 +14,7 @@ function App(match) {
 			<Router>
 				<Route exact path="/" component={Home}/>
 				<Route path="/post/:id" component={Detail}/>
+				<Route path="/auth/login" component={Login}/>
 			</Router>	
 		</div>
 	);

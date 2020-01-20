@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Item from './Items';
-import './assets/ListStyle.scss'
+import '../Assets/scss/ListStyle.scss'
 
 
 function List(props) {

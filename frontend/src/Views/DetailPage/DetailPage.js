@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { detailPosts } from '../Modules/posts/action'
+import { detailPosts } from '../../Modules/Posts/action'
 import { Link } from 'react-router-dom';
 import moment from 'moment'
 
 
-function Detail({match}) {
+function DetailPage({match}) {
 	const postId = match.params.id
 	console.log(postId);
 	const dispatch = useDispatch()
@@ -30,4 +30,4 @@ function Detail({match}) {
 		</div>
 	);
 }
-export default Detail;
+export default DetailPage;

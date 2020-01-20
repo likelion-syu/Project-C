@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {useDispatch } from 'react-redux';
 
-import { login } from '../../Modules/login/action'
+import { login } from '../../Modules/Login/action'
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-function Login(props) {
+function LoginPage(props) {
     const [username, setUsername] = useState('')
     // const [pass, setPass] = useState('')
     const dispatch = useDispatch()
@@ -127,4 +127,4 @@ function Login(props) {
 	)
 }
 
-export default Login;
+export default LoginPage;

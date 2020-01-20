@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import posts from './posts';
-import user from './user';
-import login from './login';
+import cats from './Cats';
+import posts from './Posts';
+import user from './User';
+import login from './Login';
 
 const rootReducer = combineReducers ({
+	cats,
     posts,
     user,
     login,

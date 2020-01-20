@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Cat(models.Model):
     name = models.CharField(max_length=45, blank=True, null=True)
     desc = models.CharField(max_length=45, blank=True, null=True)
-    image = models.CharField(max_length=45, blank=True, null=True)
+    image = models.ImageField(upload_to = "images/")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -1,31 +1,31 @@
-import { getPost, postPost, delPost, patchPost, putPost, detailPost } from '../../Api/djangoapi_post';
+import { getPost, postPost, delPost, patchPost, putPost, detailPost } from '../../Api/djangoapi';
 
-//TodoList 가져오기
+//List 가져오기
 export const GET_POST_DATA = 'posts/GET_POST_DATA';
 export const GET_POST_DATA_SUCCESS = 'posts/GET_POST_DATA_SUCCESS';
 export const GET_POST_DATA_ERROR = 'posts/GET_POST_DATA_ERROR';
-//TodoList 하나씩 가져오기
+//List 하나씩 가져오기
 export const GET_O_POST_DATA = 'posts/GET_O_POST_DATA'
 export const GET_O_POST_DATA_SUCCESS = 'posts/GET_O_POST_DATA_SUCCESS'
 export const GET_O_POST_DATA_ERROR = 'posts/GET_O_POST_DATA_ERROR'
-//TodoList 추가
+//List 추가
 export const POST_POST_DATA = 'posts/POST_POST_DATA';
 export const POST_POST_DATA_SUCCESS = 'posts/POST_POST_DATA_SUCCESS';
 export const POST_POST_DATA_ERROR = 'posts/POST_POST_DATA_ERROR';
-//TodoList 삭제
+//List 삭제
 export const DEL_POST_DATA = 'posts/DEL_POST_DATA';
 export const DEL_POST_DATA_SUCCESS = 'posts/DEL_POST_DATA_SUCCESS';
 export const DEL_POST_DATA_ERROR = 'posts/DEL_POST_DATA_ERROR';
-//TodoList 수정
+//List 수정
 export const PUT_POST_DATA = 'posts/PUT_POST_DATA';
 export const PUT_POST_DATA_SUCCESS = 'posts/PUT_POST_DATA_SUCCESS'; 
 export const PUT_POST_DATA_ERROR = 'posts/PUT_POST_DATA_ERROR';
-//TodoList patch
+//List patch
 export const PATCH_POST_DATA = 'posts/PATCH_POST_DATA';
 export const PATCH_POST_DATA_SUCCESS = 'posts/PATCH_POST_DATA_SUCCESS'; 
 export const PATCH_POST_DATA_ERROR = 'posts/PATCH_POST_DATA_ERROR';
 
-//TodoList 가져오는 함수
+//List 가져오는 함수
 export const getPosts = () => async dispatch => {
     dispatch({ type: GET_POST_DATA });
     try {
@@ -35,7 +35,7 @@ export const getPosts = () => async dispatch => {
         dispatch({ type: GET_POST_DATA_ERROR, error : e});
     }
 };
-//TodoList 하나씩 가져오는 함수
+//List 하나씩 가져오는 함수
 export const detailPosts = (id) => async dispatch => {
     dispatch({ type: GET_O_POST_DATA });
     try {
@@ -45,7 +45,7 @@ export const detailPosts = (id) => async dispatch => {
         dispatch ({ type: GET_O_POST_DATA_ERROR, error : e});
     }
 };
-//TodoList 추가하는 함수
+//List 추가하는 함수
 export const postPosts = (data) => async dispatch => {
     dispatch({ type: POST_POST_DATA });
     try {
@@ -55,7 +55,7 @@ export const postPosts = (data) => async dispatch => {
         dispatch ({ type: POST_POST_DATA_ERROR, error : e });
     }
 };
-//TodoList 삭제하는 함수
+//List 삭제하는 함수
 export const delPosts = (id) => async dispatch => {
     dispatch({ type: DEL_POST_DATA });
     try {
@@ -65,7 +65,7 @@ export const delPosts = (id) => async dispatch => {
         dispatch ({ type: DEL_POST_DATA_ERROR, error: e});
     }
 };
-//TodoList 수정하는 함수
+//List 수정하는 함수
 export const putPosts = (id, data) => async dispatch => {
     dispatch({ type: PUT_POST_DATA });
     try {
@@ -75,7 +75,7 @@ export const putPosts = (id, data) => async dispatch => {
         dispatch ({ type: PUT_POST_DATA_ERROR, error : e});
     }
 };
-//패치하는 함수 //좋아요 체크용으로 쓸려고 남겨둠
+//List 패치하는 함수, 좋아요 체크용으로 쓸려고 남겨둠
 export const patchPosts = (id, data) => async dispatch => {
     dispatch({ type: PATCH_POST_DATA });
     try {

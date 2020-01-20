@@ -7,7 +7,7 @@ import {
 import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-} from '../login/action'
+} from '../Login/action'
 
 const initialState = {
     token: localStorage.getItem("token"),

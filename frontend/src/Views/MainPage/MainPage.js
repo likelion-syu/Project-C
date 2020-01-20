@@ -13,16 +13,15 @@ import { postPosts, getPosts, delPosts, putPosts } from '../../Modules/Posts/act
 import { postCats, getCats, delCats, putCats } from '../../Modules/Cats/action'
 
 function MainPage() {
-	const { loading, error, data } = useSelector(state => state.posts.PostsData)
-	const { loading_c, error_c, data_c } = useSelector(state => state.cats.CatsData)
+	const { PostsData } = useSelector(state => state.posts)
+	const { CatsData} = useSelector(state => state.cats)
 	const dispatch = useDispatch()
 
 	// useEffect
 	useEffect (()=>{
-		dispatch(getPosts(), getCats())
-	},[dispatch])
-	console.log(loading, error, data)
-	console.log(loading_c, error_c, data_c)
+		dispatch(getPosts())
+		dispatch(getCats())
+	},[dispatch]) 	
 	
 	// submit + list 업데이트
 	const onPostData = async (data1, data2, data3) => {
@@ -70,18 +69,18 @@ function MainPage() {
 
 						<h2>Posts</h2>
 						<div className="ViewSection">
-							{loading && <List datas={loading} onRemove ={onRemove} />}
-							{error && <div>에러가 발생했습니다.</div>}
-							{data && <List datas={data} onRemove = {onRemove} onPutData = {onPutData} />}
+							{PostsData.loading && <List datas={PostsData.loading} onRemove ={onRemove} />}
+							{PostsData.error && <div>에러가 발생했습니다.</div>}
+							{PostsData.data && <List datas={PostsData.data} onRemove = {onRemove} onPutData = {onPutData} />}
 						</div>
 
 						<Divider variant="middle" />
 
 						<h2>Cats</h2>
 						<div className="ViewSection">
-							{loading_c && <List datas={loading_c} onRemove ={onRemove} />}
-							{error_c && <div>에러가 발생했습니다.</div>}
-							{data_c && <List datas={data_c} onRemove = {onRemove} onPutData = {onPutData} />}
+							{CatsData.loading && <List datas={CatsData.loading} onRemove ={onRemove} />}
+							{CatsData.error && <div>에러가 발생했습니다.</div>}
+							{CatsData.data && <List datas={CatsData.data} onRemove = {onRemove} onPutData = {onPutData} />}
 						</div>
 					</Container>
 				</div>

@@ -8,16 +8,24 @@ import Thunk  from 'redux-thunk';
 import rootReducer from './Modules';
 import { BrowserRouter, BrowserRouter as Router, Route } from 'react-router-dom';
 
+import setAuthorizationToken from "./Authorization/authorization";
+import {LOGIN_SUCCESS, LOGIN_FAIL} from "./Modules/Auth/Login/action";
+
 import MainPage from './Views/MainPage/MainPage'
 import DetailPage from './Views/DetailPage/DetailPage'
 import LoginPage from './Views/LoginPage/LoginPage'
+import RegistPage from './Views/RegistPage/RegistPage'
 
 import './Assets/scss/IndexStyle.scss'
 
 
-
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(Thunk)));
-
+if (localStorage.getItem('token')){
+    console.log(localStorage.getItem('token'))
+    setAuthorizationToken(localStorage.getItem('token')) 
+    let userData = localStorage.getItem('userData') == null ? null : JSON.parse(localStorage.getItem('userData'))
+    store.dispatch({ type: LOGIN_SUCCESS, payload: userData}) //provided he has a valid token 
+}
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
@@ -25,6 +33,7 @@ ReactDOM.render(
 				<Route exact path="/" component={MainPage}/>
 				<Route path="/post/:id" component={DetailPage}/>
 				<Route path="/login" component={LoginPage}/>
+                <Route path="/regist" component={RegistPage}/>
 			</Router>
         </BrowserRouter>
     </Provider>,

@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from rest_framework import viewsets, permissions, generics
+from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
 
+from . import permission
 from . import models
 from . import serializers
 from .serializers import (
@@ -13,8 +14,12 @@ from .serializers import (
 from knox.models import AuthToken
 
 class PostViewset(viewsets.ModelViewSet):
-    queryset = models.Post.objects.all().filter()
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, permission.IsOwnerOrReadOnly]
+    queryset = models.Post.objects.all().order_by("-created_at")
     serializer_class = serializers.PostSerializer
+    
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 class CommentViewset(viewsets.ModelViewSet):
     queryset = models.Comment.objects.all().order_by('id')
@@ -27,6 +32,8 @@ class CatViewset(viewsets.ModelViewSet):
 class UserViewset(viewsets.ModelViewSet):
     queryset = models.AuthUser.objects.all().order_by('id')
     serializer_class = serializers.UserSerializer
+
+
 
 class RegistrationAPI(generics.GenericAPIView):
     serializer_class = CreateUserSerializer

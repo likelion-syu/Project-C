@@ -29,7 +29,8 @@ export const PATCH_POST_DATA_ERROR = 'posts/PATCH_POST_DATA_ERROR';
 export const getPosts = () => async dispatch => {
     dispatch({ type: GET_POST_DATA });
     try {
-        const PostsData = await getPost();
+        const token = localStorage.getItem("token")
+        const PostsData = await getPost(token);
         dispatch({ type: GET_POST_DATA_SUCCESS, PostsData });
     } catch (e) {
         dispatch({ type: GET_POST_DATA_ERROR, error : e});

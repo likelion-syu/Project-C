@@ -17,7 +17,7 @@ class Post(models.Model):
     title = models.CharField(max_length=45, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to = "images/")
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name="posts", on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

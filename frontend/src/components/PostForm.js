@@ -60,6 +60,7 @@ function PostForm(props) {
 						/>
 						<input 
 						type = "file" 
+						name = "image"
 						onChange={handleImageChange}
 						/>
 					</Grid>	

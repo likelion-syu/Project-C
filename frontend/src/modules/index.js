@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import cats from './Cats';
 import posts from './Posts';
-import user from './User';
-import login from './Login';
+import user from './Auth/User';
+// import login from './Auth/Login';
 
 const rootReducer = combineReducers ({
 	cats,
     posts,
     user,
-    login,
+    // login,
 });
 
 export default rootReducer;

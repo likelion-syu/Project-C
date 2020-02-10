@@ -5,6 +5,7 @@ import {
 } from './action'
 
 import {
+    LOGIN,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
 } from '../Login/action'
@@ -12,12 +13,17 @@ import {
 const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
-    isLading: false,
+    isLoading: false,
     user: null
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
+        case LOGIN:
+            return {
+                ...state,
+                isLoading: true
+            };
         case USER_DATA:
             return {
                 ...state,
@@ -42,6 +48,7 @@ export default function(state = initialState, action) {
         case USER_DATA_ERROR:
         case LOGIN_FAIL:
             localStorage.removeItem('token');
+            localStorage.removeItem('user')
             return {
                 ...state,
                 token: null,

@@ -19,7 +19,7 @@ export const USER_LOGIN =  () => (dispatch, getState) => {
         config.headers['Authorization'] = 'Token '+ token ;
     }
 
-    axios.get('http://127.0.0.1:8000/api/auth/user', config)
+    axios.get('/api/auth/user', config)
         .then(res => {
             dispatch({
                 type: USER_DATA_SUCCESS,

@@ -33,15 +33,16 @@ function Item(props) {
 	};
 	
 	return (
-		<Link to={`post/${props.data.id}`}>
-			<Paper className='listbox'>
+		<Paper className='listbox'>
 				<li key={props.data.id}>
 					<Grid container direction="row" justify="center" alignItems="center">
 						<Grid item xs={10}>
+						<Link to={`post/${props.data.id}`}>
 							<h2>{props.data.title}</h2>
 							<img src={props.data.image} alt={props.data.title}/>
 							<p>{props.data.content}</p>
 							<p className={classes.time}>{moment(props.data.time).startOf('day').fromNow() }</p>
+						</Link>
 						</Grid>
 						<Grid item xs={1}>
 							<Grid container direction="row" justify="center" alignItems="center">
@@ -60,7 +61,6 @@ function Item(props) {
 					</Grid>
 				</li>
 			</Paper>
-		</Link>
 	)
 }
 

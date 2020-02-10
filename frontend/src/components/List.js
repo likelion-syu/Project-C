@@ -2,7 +2,7 @@ import React from 'react';
 
 import Item from './Items';
 import '../Assets/scss/ListStyle.scss'
-
+console.log(List)
 
 function List(props) {
 	return (

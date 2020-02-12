@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CommentItem from './CommentItems'
 import Item from './Items';
 import '../Assets/scss/ListStyle.scss'
 
@@ -7,9 +7,9 @@ function List(props) {
 	return (
 		<ul>
 			{
-				props.datas.results.map(
+				props.datas.map(
 						(data) => (
-						<Item
+						<CommentItem
 							key={data.id}
 							data = {data}
 							onRemove = {props.onRemove}

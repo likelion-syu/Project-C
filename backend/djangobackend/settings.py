@@ -48,7 +48,9 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10,
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication',
+    ]
 }
 
 MIDDLEWARE = [
@@ -92,10 +94,10 @@ WSGI_APPLICATION = 'djangobackend.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-DATABASES = {
+DATABASES = { 
     'default' : {
         'ENGINE' : 'django.db.backends.mysql',
-        'HOST' : '34.84.211.136',
+        'HOST' : '127.0.0.1',
         'OPTIONS' : {
             'read_default_file' : os.path.join(BASE_DIR, 'mysql.cnf'),
             'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'",

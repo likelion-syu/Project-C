@@ -10,7 +10,6 @@ class Cat(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        managed = False
         db_table = 'cat'
 
 class Post(models.Model):
@@ -22,7 +21,6 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        managed = False
         db_table = 'post'
 
 class Comment(models.Model):
@@ -30,10 +28,9 @@ class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    post = models.ForeignKey('Post', models.DO_NOTHING, blank=True, null=True)
+    post = models.ForeignKey('Post', models.DO_NOTHING, blank=True, null=True, related_name="comments")
 
     class Meta:
-        managed = False
         db_table = 'comment'
 
 class AuthGroup(models.Model):

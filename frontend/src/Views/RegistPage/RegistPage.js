@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useDispatch } from 'react-redux';
+import {registUser} from '../../Modules/Auth/Regist/action';
 
 import axios from 'axios';
 
@@ -29,10 +30,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 function RegistPage() {
+	const dispatch = useDispatch();
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
-    // const dispatch = useDispatch()
+
 	const classes = useStyles();
 
 	const [values, setValues] = React.useState({
@@ -54,12 +56,12 @@ function RegistPage() {
 			alert('뭔가 내용이 너무 길어요');
         }
 		else {
-
-			axios.post('/api/auth/regist/', {
-                username: username,
-                email: email,
-                password: values.password
-            })
+			// axios.post('/api/auth/regist/', {
+            //     username: username,
+            //     email: email,
+            //     password: values.password
+			// })
+			dispatch(registUser(username, email, values.password))
             setUsername("");
             setEmail("");
 			setValues({...values, password: ""})

@@ -1,20 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework.views import APIView
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
-from . import permission
+from .permission import *
 from . import models
 from . import serializers
 from .serializers import (
     CreateUserSerializer,
     UserSerializer,
     LoginUserSerializer,
+    CommentSerializer
 )
 
 from knox.models import AuthToken
 
 class PostViewset(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, permission.IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     queryset = models.Post.objects.all().order_by("-created_at")
     serializer_class = serializers.PostSerializer
     
@@ -22,8 +26,18 @@ class PostViewset(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 
 class CommentViewset(viewsets.ModelViewSet):
-    queryset = models.Comment.objects.all().order_by('id')
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
+    queryset = models.Comment.objects.all().order_by('-created_at')
     serializer_class = serializers.CommentSerializer
+
+    @action(detail=True, methods=['get'])
+    def post_comment (self, request, **kwargs):
+        print( kwargs)
+        post = get_object_or_404(models.Post, pk=kwargs['pk'])
+        comments = post.comments.all()
+        serializer = self.get_serializer(comments, many=True)
+        return Response(serializer.data)
 
 class CatViewset(viewsets.ModelViewSet):
     queryset = models.Cat.objects.all().order_by('id')

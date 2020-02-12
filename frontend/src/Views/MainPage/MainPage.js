@@ -22,7 +22,6 @@ function MainPage() {
 		dispatch(getPosts())
 		dispatch(getCats())
 	},[dispatch]) 	
-	console.log(localStorage.getItem("token"))
 	
 	// submit + list 업데이트
 	const onPostData = async (data1, data2, data3) => {
@@ -61,7 +60,6 @@ function MainPage() {
 						<h1>Cat</h1>
 
 						<Link to='/login'>Login</Link>
-						{localStorage.getItem("token")}
 
 						<Paper className='listbox'>
 							<PostForm onPostData={ onPostData }/>

@@ -25,7 +25,12 @@ if (localStorage.getItem('token')){
     setAuthorizationToken(localStorage.getItem('token')) 
     let userData = localStorage.getItem('userData') == null ? null : JSON.parse(localStorage.getItem('userData'))
     store.dispatch({ type: LOGIN_SUCCESS, payload: userData}) //provided he has a valid token 
-}
+} else store.dispatch({type: LOGIN_FAIL,
+    token: null,
+    user: null,
+    isAuthenticated: false,
+    isLoading: false
+})
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>

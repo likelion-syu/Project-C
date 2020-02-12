@@ -7,7 +7,7 @@ import {
 import {
     LOGIN,
     LOGIN_SUCCESS,
-    LOGIN_FAIL,
+    LOGIN_FAIL
 } from '../Login/action'
 
 const initialState = {

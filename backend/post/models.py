@@ -25,10 +25,10 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.CharField(max_length=45, blank=True, null=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, models.DO_NOTHING, blank=True, null=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="comments", blank=True, null=True, on_delete= models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    post = models.ForeignKey('Post', models.DO_NOTHING, blank=True, null=True, related_name="comments")
+    post = models.ForeignKey('Post', blank=True, null=True, related_name="comments", on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'comment'

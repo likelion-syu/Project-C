@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+PROJECT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -28,6 +28,28 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+from . import env
+
+DEFAULT_FILE_STORAGE = 'djangobackend.gcloud.GoogleCloudMediaFileStorage'
+STATICFILES_STORAGE = 'djangobackend.gcloud.GoogleCloudStaticFileStorage'
+
+GS_PROJECT_ID = env.MY_PROJECT_ID
+
+GS_STATIC_BUCKET_NAME = env.MY_STATIC
+GS_MEDIA_BUCKET_NAME = env.MY_MEDIA
+
+STATIC_URL = 'https://storage.googleapis.com/{}/'.format(GS_STATIC_BUCKET_NAME)
+
+STATIC_ROOT = "static/"
+GS_ACCESS_KEY_ID= env.MY_ACCESS_ID
+GS_SECRET_ACCESS_KEY = env.MY_SECRET_KEY
+
+MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_MEDIA_BUCKET_NAME)
+
+UPLOAD_ROOT = 'media/uploads/'
+
+DOWNLOAD_ROOT = os.path.join(PROJECT_ROOT, "static/media/downloads")
+DOWNLOAD_URL = STATIC_URL + "media/downloads"
 # Application definition
 
 INSTALLED_APPS = [
@@ -99,11 +121,12 @@ DATABASES = {
         'ENGINE' : 'django.db.backends.mysql',
         'HOST' : '127.0.0.1',
         'OPTIONS' : {
-            'read_default_file' : os.path.join(BASE_DIR, 'mysql.cnf'),
+            'read_default_file' : os.path.join(PROJECT_ROOT, 'mysql.cnf'),
             'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -141,10 +164,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True

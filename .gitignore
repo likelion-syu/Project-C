@@ -1,6 +1,8 @@
 ### SECURE & CREDENTIAL ###
 *.cnf
-
+Project-C-16246a11601c.json
+*.env
+env.py
 ### Django ###
 mysql.cnf
 *.log

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import {useDispatch } from 'react-redux';
 import {registUser} from '../../Modules/Auth/Regist/action';
 
-import axios from 'axios';
-
 import { makeStyles } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -56,11 +54,6 @@ function RegistPage() {
 			alert('뭔가 내용이 너무 길어요');
         }
 		else {
-			// axios.post('/api/auth/regist/', {
-            //     username: username,
-            //     email: email,
-            //     password: values.password
-			// })
 			dispatch(registUser(username, email, values.password))
             setUsername("");
             setEmail("");

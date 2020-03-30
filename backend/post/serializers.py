@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 class PostSerializer(serializers.ModelSerializer):
-	image = serializers.ImageField(use_url=True)
+	post_title_img_url = serializers.ImageField(use_url=True)
 	created_at = serializers.ReadOnlyField()
 	updated_at = serializers.ReadOnlyField()
-	author = serializers.ReadOnlyField(source='author.username')
+	user = serializers.ReadOnlyField(source='user.username')
 
 	class Meta:
 		model = models.Post
